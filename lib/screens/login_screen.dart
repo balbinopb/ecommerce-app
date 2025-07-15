@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 class LoginScreen extends GetView<AuthController> {
   const LoginScreen({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,11 +18,7 @@ class LoginScreen extends GetView<AuthController> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
-                Image.asset(
-                  'assets/logo2.png',
-                  height: 100,
-                  width: 100,
-                ),
+                Image.asset('assets/logo2.png', height: 100, width: 100),
                 const SizedBox(height: 24),
                 const Text(
                   'LOGIN',
@@ -38,7 +33,7 @@ class LoginScreen extends GetView<AuthController> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 32),
-          
+
                 const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -62,7 +57,7 @@ class LoginScreen extends GetView<AuthController> {
                   ),
                 ),
                 const SizedBox(height: 20),
-          
+
                 const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -75,48 +70,54 @@ class LoginScreen extends GetView<AuthController> {
                   ),
                 ),
                 const SizedBox(height: 4),
-                Obx(() => TextField(
-                      controller: controller.passwordController,
-                      obscureText: controller.obscureText.value,
-                      decoration: InputDecoration(
-                        hintText: '********',
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            controller.obscureText.value
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                          ),
-                          onPressed: controller.toggleObscure,
+                Obx(
+                  () => TextField(
+                    controller: controller.passwordController,
+                    obscureText: controller.obscureText.value,
+                    decoration: InputDecoration(
+                      hintText: '********',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          controller.obscureText.value
+                              ? Icons.visibility_off
+                              : Icons.visibility,
                         ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 12),
+                        onPressed: controller.toggleObscure,
                       ),
-                    )),
-                const SizedBox(height: 16),
-          
-                Obx(() => SizedBox(
-                      width: double.infinity,
-                      height: 48,
-                      child: ElevatedButton(
-                        onPressed: controller.agree.value ? () {} : null,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppCollors.green,
-                          disabledBackgroundColor: Colors.green.shade200,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(fontSize: 16,color: AppCollors.white),
-                        ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                    )),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                      ),
+                    ),
+                  ),
+                ),
                 const SizedBox(height: 16),
-          
+
+                SizedBox(
+                  width: double.infinity,
+                  height: 48,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // nav to home
+                      Get.toNamed(Routes.home);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppCollors.green,
+                      disabledBackgroundColor: Colors.green.shade200,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(fontSize: 16, color: AppCollors.white),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -132,7 +133,7 @@ class LoginScreen extends GetView<AuthController> {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),
