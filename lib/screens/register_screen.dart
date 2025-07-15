@@ -4,8 +4,8 @@ import 'package:ecommerce/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginScreen extends GetView<AuthController> {
-  const LoginScreen({super.key});
+class RegisterScreen extends GetView<AuthController> {
+  const RegisterScreen({super.key});
 
 
   @override
@@ -26,7 +26,7 @@ class LoginScreen extends GetView<AuthController> {
                 ),
                 const SizedBox(height: 24),
                 const Text(
-                  'LOGIN',
+                  'Create your\naccount',
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.w500,
@@ -97,6 +97,23 @@ class LoginScreen extends GetView<AuthController> {
                     )),
                 const SizedBox(height: 16),
           
+                Obx(() => Row(
+                      children: [
+                        Checkbox(
+                          value: controller.agree.value,
+                          activeColor: AppCollors.green,
+                          onChanged: controller.toggleAgree,
+                        ),
+                        const Expanded(
+                          child: Text(
+                            'By creating an account you agree with our terms and conditions',
+                            style: TextStyle(fontSize: 13, color: Colors.grey),
+                          ),
+                        ),
+                      ],
+                    )),
+                const SizedBox(height: 24),
+          
                 Obx(() => SizedBox(
                       width: double.infinity,
                       height: 48,
@@ -110,7 +127,7 @@ class LoginScreen extends GetView<AuthController> {
                           ),
                         ),
                         child: const Text(
-                          'Login',
+                          'Create an account',
                           style: TextStyle(fontSize: 16,color: AppCollors.white),
                         ),
                       ),
@@ -120,14 +137,14 @@ class LoginScreen extends GetView<AuthController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Not a member? "),
+                    const Text("Already a member? "),
                     GestureDetector(
                       onTap: () {
-                        // Navigate to register
-                        Get.toNamed(Routes.register);
+                        // Navigate to login
+                        Get.toNamed(Routes.login);
                       },
                       child: const Text(
-                        "Sign up",
+                        "Log in",
                         style: TextStyle(color: AppCollors.green),
                       ),
                     ),
@@ -141,3 +158,4 @@ class LoginScreen extends GetView<AuthController> {
     );
   }
 }
+
