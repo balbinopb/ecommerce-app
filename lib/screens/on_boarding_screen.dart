@@ -1,23 +1,19 @@
 import 'dart:math';
+import 'package:ecommerce/controllers/onboarding_controller.dart';
 import 'package:ecommerce/core/app_collors.dart';
+import 'package:ecommerce/routes/app_routes.dart';
 import 'package:ecommerce/widgets/custom_button.dart';
 import 'package:ecommerce/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class OnBoardingScreen extends StatelessWidget {
-  final List<String> backgrounds = [
-    'assets/onBoarding/bg1.png',
-    'assets/onBoarding/bg2.png',
-    'assets/onBoarding/bg3.png',
-  ];
-  final String logo = 'assets/logo.png';
-  final String googleIcon = 'assets/icons/google.png';
-
-  OnBoardingScreen({super.key});
+class OnBoardingScreen extends GetView<OnboardingController> {
+  const OnBoardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final bg = backgrounds[Random().nextInt(backgrounds.length)];
+    final bg =
+        controller.backgrounds[Random().nextInt(controller.backgrounds.length)];
 
     return Scaffold(
       body: Container(
@@ -28,7 +24,7 @@ class OnBoardingScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Image.asset(logo),
+              Image.asset(controller.logo),
               CustomText(text: "Stay High."),
               CustomText(text: "Stay Happy."),
               CustomText(text: "Always."),
@@ -38,16 +34,22 @@ class OnBoardingScreen extends StatelessWidget {
                 children: [
                   CustomButton(label: "Join", onPressed: () {}),
                   SizedBox(width: 20),
-                  CustomButton(label: "Login", onPressed: () {}),
+                  CustomButton(
+                    label: "Login",
+                    onPressed: () {
+                      // nav to login
+                      Get.toNamed(Routes.login);
+                    },
+                  ),
                 ],
               ),
               SizedBox(height: 20),
               TextButton(
-                onPressed: () {}, //logic to handle google login
+                onPressed: () {},
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(googleIcon, height: 20, width: 20),
+                    Image.asset(controller.googleIcon, height: 20, width: 20),
                     Text(
                       " Continue with google",
                       style: TextStyle(
