@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DrawerComponent extends StatelessWidget {
-  const DrawerComponent({super.key});
+  final String name = "dukauwa.du@gmail.com";
+  final TextStyle style = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: Colors.grey,
+  );
+  // final bool selected;
+  DrawerComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      
       child: ListView(
-        
         padding: EdgeInsets.symmetric(vertical: 42),
         children: [
           DrawerHeader(
@@ -20,28 +26,33 @@ class DrawerComponent extends StatelessWidget {
             child: Column(
               children: [
                 Image.asset("assets/logo3.png"),
-
                 Icon(Icons.person_3_rounded, size: 100),
+                Text(
+                  name,
+                  style: GoogleFonts.bokor(fontWeight: FontWeight.w500),
+                ),
               ],
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
+            title: Text('Explore', style: style),
             onTap: () {
               Navigator.pop(context); // Close drawer
             },
           ),
           ListTile(
-            leading: Icon(Icons.shopping_cart),
-            title: Text('My Cart'),
+            title: Text('Vapes', style: style),
             onTap: () {
               Navigator.pop(context);
             },
           ),
+          ListTile(title: Text('Extacts', style: style), onTap: () {}),
+          ListTile(title: Text('Edibles', style: style), onTap: () {}),
+          ListTile(title: Text('Flowers', style: style), onTap: () {}),
+          ListTile(title: Text('Acessories', style: style), onTap: () {}),
+          Divider(),
           ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Logout'),
+            title: Text('Log Out', style: TextStyle(color: Colors.red)),
             onTap: () {},
           ),
         ],
