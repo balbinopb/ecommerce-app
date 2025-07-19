@@ -9,6 +9,52 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: DrawerComponent(), //drawer is now connected
+      appBar:AppBar(
+        toolbarHeight: 70,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Left section: Menu + Logos
+            Row(
+              children: [
+                Builder(
+                  builder: (context) => IconButton(
+                    icon: const Icon(Icons.menu, color: Colors.black),
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Image.asset('assets/logo2.png', height: 30),
+                const SizedBox(width: 8),
+                Image.asset('assets/Spliff.png', height: 30),
+              ],
+            ),
+
+            // Right section: Search, Favorite, Profile
+            Row(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.search, color: Colors.black),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: const Icon(Icons.favorite_border, color: Colors.black),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: const Icon(Icons.person_outline, color: Colors.black),
+                  onPressed: () {},
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
 
       body: SafeArea(
         child: SingleChildScrollView( 
@@ -16,37 +62,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               // Top bar
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Builder(
-                        builder: (context) => IconButton(
-                          icon: const Icon(Icons.menu),
-                          onPressed: () {
-                            Scaffold.of(context).openDrawer();//open drawer
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Image.asset("assets/logo2.png", height: 32),
-                      const SizedBox(width: 8),
-                      Image.asset("assets/Spliff.png", height: 32),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      IconButton(icon: const Icon(Icons.search), onPressed: () {}),
-                      const SizedBox(width: 8),
-                      IconButton(icon: const Icon(Icons.favorite_border), onPressed: () {}),
-                      const SizedBox(width: 8),
-                      IconButton(icon: const Icon(Icons.person_outline), onPressed: () {}),
-                    ],
-                  ),
-                ],
-              ),
+              
 
               const SizedBox(height: 15),
 
